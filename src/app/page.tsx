@@ -43,8 +43,25 @@ export default function Home() {
   return (
     <>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <GeometricPattern />
-        <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/hero.jpg"
+            alt="Luxurious Interior Design"
+            fill
+            priority
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/80" /> {/* Dark overlay */}
+        </div>
+        
+        {/* Geometric Pattern with reduced opacity */}
+        <div className="absolute inset-0 z-10 opacity-10">
+          <GeometricPattern />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-20 text-center max-w-4xl mx-auto px-6">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -59,14 +76,16 @@ export default function Home() {
             transition={{ duration: 1, delay: 1 }}
             className="text-xl md:text-2xl text-gray-300 mb-8"
           >
-            Where design meets emotion, and spaces tell stories
+            Where design meets emotion and spaces tell stories
           </motion.p>
         </div>
+
+        {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
+          className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
         >
           <div className="w-px h-24 bg-white/20" />
         </motion.div>
@@ -81,7 +100,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-3xl font-light text-center mb-16"
           >
-            Selected Projects
+            Our Projects
           </motion.h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
@@ -101,7 +120,7 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-3xl font-light text-center mb-16"
           >
-            Let's Create Together
+            Get in Touch
           </motion.h2>
           <form className="space-y-8">
             <div className="space-y-4">
