@@ -1,6 +1,5 @@
 import { Inter } from 'next/font/google'
-import Footer from './components/Footer'
-import Header from './components/Header'
+import Navigation from './components/Navigation'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -16,11 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} bg-gradient-to-b from-white to-gray-100 min-h-screen`}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.className} bg-black text-white min-h-screen`}>
+        <Navigation />
+        <main className="relative">{children}</main>
       </body>
     </html>
   )
