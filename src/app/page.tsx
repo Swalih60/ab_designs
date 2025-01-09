@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link'
 import { useInView } from 'react-intersection-observer'
 import GeometricPattern from './components/GeometricPattern'
 import { projects } from './data/projects'
@@ -102,11 +103,15 @@ export default function Home() {
           >
             Our Projects
           </motion.h2>
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
+            <Link href={`/projects/${project.id} `} key={project.id} passHref>
               <ProjectCard key={project.id} project={project} index={index} />
+              </Link>
             ))}
           </div>
+          
         </div>
       </section>
 
