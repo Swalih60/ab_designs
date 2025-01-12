@@ -17,8 +17,12 @@ export interface Project {
         '/images/t11.JPG',
         '/images/t12.JPG',
         '/images/t13.JPG',
+        '/images/t14.JPG',
+        '/images/t15.JPG',
+        '/images/t16.JPG',
+        '/images/t17.JPG',
       ],
-      details: 'This project involved transforming a raw loft space into a modern, open-concept living area. We focused on preserving the industrial charm while introducing warm, contemporary elements. The result is a harmonious blend of exposed brick, sleek furnishings, and custom-built storage solutions.',
+      details: '',
     },
     {
       id: 'coastal-retreat',

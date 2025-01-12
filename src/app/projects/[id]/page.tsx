@@ -1,13 +1,16 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { FullScreenImage } from '@/app/components/FullScreenImage'
+import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'
+import { useState } from 'react'
 import { projects } from '../../data/projects'
 
 export default function ProjectPage() {
   const { id } = useParams()
   const project = projects.find(p => p.id === id)
+  const [fullScreenImage, setFullScreenImage] = useState<string | null>(null)
 
   if (!project) {
     return <div>Project not found</div>
@@ -39,7 +42,8 @@ export default function ProjectPage() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="overflow-hidden rounded-lg shadow-lg"
+              className="overflow-hidden rounded-lg shadow-lg cursor-pointer"
+              onClick={() => setFullScreenImage(image)}
             >
               <Image
                 src={image}
@@ -61,6 +65,15 @@ export default function ProjectPage() {
           <p>{project.details}</p>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {fullScreenImage && (
+          <FullScreenImage
+            src={fullScreenImage}
+            alt={project.title}
+            onClose={() => setFullScreenImage(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }
